@@ -27,4 +27,4 @@ De cada vuelta siempre se conoce:
 (minutos,segundos)
 
 También se conoce la extensión de la vuelta expresada en Km, para todas las vueltas es la
-misma ya que el ciclista realiza los entrenamientos en un circuito cerrado.
+misma ya que el ciclista realiza los entrenamientos en un circuito cerrado .
