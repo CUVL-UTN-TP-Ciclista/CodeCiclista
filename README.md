@@ -1,13 +1,16 @@
 # CodeCiclista
 Consideraciones para el desarrollo y entrega
+
 ● Desarrollo
 ○ El trabajo práctico deberá ser desarrollado utilizando lenguaje C/C++.
 ○ El proyecto deberá estar organizado de la siguiente forma:
-    MI_Proyecto
+
+MI_Proyecto
       ● includes: directorio para los archivos de encabezado
       ● src: directorio para los archivos fuente
       ● main.cpp
-  ● Entrega
+
+● Entrega
       ○ Se realizará una sóla entrega formal al final del cuatrimestre.
       ○ Se deberá entregar el código fuente y la documentación del trabajo práctico en
       formato digital a través de la plataforma Classroom correspondiente al curso.
