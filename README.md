@@ -1,8 +1,8 @@
 # CodeCiclista
 Consideraciones para el desarrollo y entrega
-  ● Desarrollo
-      ○ El trabajo práctico deberá ser desarrollado utilizando lenguaje C/C++.
-      ○ El proyecto deberá estar organizado de la siguiente forma:
+● Desarrollo
+○ El trabajo práctico deberá ser desarrollado utilizando lenguaje C/C++.
+○ El proyecto deberá estar organizado de la siguiente forma:
     MI_Proyecto
       ● includes: directorio para los archivos de encabezado
       ● src: directorio para los archivos fuente
