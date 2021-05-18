@@ -60,22 +60,50 @@ b. Cúal fue el entrenamiento con la vuelta más lenta y su tiempo.
 #include <istream>
 using namespace std;
 
-struct vueltas{
-	   int posicion;
-	   int duracion;
+//Estructuras
+struct st_Vueltas{
+	   int posicionDeLaVuelta;
+	   int duracionDeVuelta;
 	   int vuelta[20];
-	   int kmVuelta=47;
-}Estructura_Vueltas;
+	   int const kmTotalVuelta=47;
+};
 
+//ProtoFunciones
+void ingresoDeDato(string mensaje,int &valor);
+void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
+void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
 
 int main(){
 	
-	int posicionDeLaVuelta=0, duracionDelRecorrido=0, cantidad=0;
-	
-	Estructura_Vueltas vueltas[cantidad];
-	
-	
-	
-	
+	int posicionDeLaVuelta=0, duracionDelRecorrido=0, cantidadVueltas=0;
+    	ingresoDatos("Ingrese la cantidad de Vueltas a cargar: ", cantidadVueltas);
+	st_Vueltas Vueltas[cantidadVueltas];
+
+   	cargoLasVueltas(Vueltas, cantidadVueltas);
+
 	return 0;
 }
+
+//DefiFunciones
+void ingresoDeDato(string mensaje, int&valor){
+cout<<mensaje;
+cin>>valor;
+}
+
+void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
+    for (int i=0; i<cantVueltas; i++){
+        ingresoDatos("Ingrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
+		ingresoDatos("Ingrese Tiempo.de Vuelta mmss: ", Vueltas[i].tiempoVuelta);
+//		ingresoDatos("Ingrese Largo de Vuelta: ", Vueltas[i].largoVuelta);
+  		Vueltas[i].largoVuelta = 20;
+    }
+}
+
+void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
+	for (int i=0; i<cantVueltas;i++){
+		cout<<"\nVuelta: "<<Vueltas[i].nroVuelta;
+		cout<<"\nTiempo: "<<Vueltas[i].tiempoVuelta;
+		cout<<"\nLargo: "<<Vueltas[i].largoVuelta<<endl;
+	}
+}
+	
