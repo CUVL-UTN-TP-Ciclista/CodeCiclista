@@ -1,3 +1,4 @@
+
 /* Trabajo práctico Ciclista	
 Integrantes
 Mateo, Bautista
@@ -55,55 +56,59 @@ a. Cúal fue el entrenamiento con la vuelta más rápida y su tiempo. Debe mostr
 los datos de la vuelta correspondiente
 b. Cúal fue el entrenamiento con la vuelta más lenta y su tiempo.
 */
-
-#include <iostream>
-#include <istream>
+# include<iostream>
+# include<math.h>
+# include<stdlib.h>
+# include<string.h>
 using namespace std;
 
+# define SEPARADOR ' '
+# define MAX_FIL 100
+# define MAX_COL 100
+
 //Estructuras
-struct st_Vueltas{
-	   int posicionDeLaVuelta;
-	   int duracionDeVuelta;
-	   int vuelta[20];
-	   int const kmTotalVuelta=47;
+struct st_Vueltas {
+	int nroVuelta;
+	int tiempoVuelta; //MMSS
+	int const largoVuelta=47;
 };
 
 //ProtoFunciones
-void ingresoDeDato(string mensaje,int &valor);
+void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle);
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
-void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
+void nuestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
 
 int main(){
-	
-	int posicionDeLaVuelta=0, duracionDelRecorrido=0, cantidadVueltas=0;
-    	ingresoDatos("Ingrese la cantidad de Vueltas a cargar: ", cantidadVueltas);
-	st_Vueltas Vueltas[cantidadVueltas];
+    int cantVueltas=0;
+    ingresoDeDato("Ingrese la cantidad de Vueltas a cargar: ", cantVueltas);
+	st_Vueltas Vueltas[cantVueltas];
 
-   	cargoLasVueltas(Vueltas, cantidadVueltas);
+   	cargoLasVueltas(Vueltas, cantVueltas);
 
+
+	cout<< endl;
+	system("pause");
 	return 0;
 }
 
 //DefiFunciones
-void ingresoDeDato(string mensaje, int&valor){
-cout<<mensaje;
-cin>>valor;
+void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle){
+	cout<<mensajeAlUsuario;
+	cin>>valorDetalle;
 }
 
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
     for (int i=0; i<cantVueltas; i++){
-        ingresoDatos("Ingrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
-		ingresoDatos("Ingrese Tiempo.de Vuelta mmss: ", Vueltas[i].tiempoVuelta);
-//		ingresoDatos("Ingrese Largo de Vuelta: ", Vueltas[i].largoVuelta);
-  		Vueltas[i].largoVuelta = 20;
+        ingresoDeDato("Ingrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
+		ingresoDeDato("Ingrese Tiempo.de Vuelta mmss: ", Vueltas[i].tiempoVuelta);
+//		ingresoDeDato("Ingrese Largo de Vuelta: ", Vueltas[i].largoVuelta);
     }
 }
 
-void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
+void nuestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
 	for (int i=0; i<cantVueltas;i++){
 		cout<<"\nVuelta: "<<Vueltas[i].nroVuelta;
 		cout<<"\nTiempo: "<<Vueltas[i].tiempoVuelta;
 		cout<<"\nLargo: "<<Vueltas[i].largoVuelta<<endl;
-	}
+    }   
 }
-	
