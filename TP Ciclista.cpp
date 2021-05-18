@@ -76,7 +76,7 @@ struct st_Vueltas {
 //ProtoFunciones
 void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle);
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
-void nuestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
+void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
 
 int main(){
     int cantVueltas=0;
@@ -101,14 +101,14 @@ void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
     for (int i=0; i<cantVueltas; i++){
         ingresoDeDato("Ingrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
 		ingresoDeDato("Ingrese Tiempo.de Vuelta mmss: ", Vueltas[i].tiempoVuelta);
-//		ingresoDeDato("Ingrese Largo de Vuelta: ", Vueltas[i].largoVuelta);
     }
 }
 
-void nuestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
+void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
 	for (int i=0; i<cantVueltas;i++){
 		cout<<"\nVuelta: "<<Vueltas[i].nroVuelta;
 		cout<<"\nTiempo: "<<Vueltas[i].tiempoVuelta;
 		cout<<"\nLargo: "<<Vueltas[i].largoVuelta<<endl;
-    }   
+    }
+    
 }
