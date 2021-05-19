@@ -56,10 +56,11 @@ a. Cúal fue el entrenamiento con la vuelta más rápida y su tiempo. Debe mostr
 los datos de la vuelta correspondiente
 b. Cúal fue el entrenamiento con la vuelta más lenta y su tiempo.
 */
-# include<iostream>
-# include<math.h>
-# include<stdlib.h>
-# include<string.h>
+#include<iostream>
+#include<math.h>
+#include<stdlib.h>
+#include<string.h>
+
 using namespace std;
 
 # define SEPARADOR ' '
@@ -70,24 +71,38 @@ using namespace std;
 struct st_Vueltas {
 	int nroVuelta;
 	int tiempoVuelta; //MMSS
-	int const largoVuelta=47;
+	int const largoVuelta=20;//Km
 };
 
 //ProtoFunciones
 void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle);
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
 void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
+void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida);
+void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,int&tiempoVueltaLenta);
 
 int main(){
     int cantVueltas=0;
+    int vRapida=0,tiempoVRapida=0;
+    int vLenta=0,tiempoVLenta=0;
+    
+	//Etapa 1.a)
     ingresoDeDato("Ingrese la cantidad de Vueltas a cargar: ", cantVueltas);
 	st_Vueltas Vueltas[cantVueltas];
-
    	cargoLasVueltas(Vueltas, cantVueltas);
 
-
+	//Etapa 1.b)
+	calcularVueltaRapida(Vueltas,cantVueltas,vRapida,tiempoVRapida);
+	calcularVueltaLenta(Vueltas,cantVueltas,vLenta,tiempoVLenta);
+	
+	
+	muestroLasVueltas(Vueltas,cantVueltas);
+	
+	cout<<"\nVuelta mas rapida, vuelta Nro "<<vRapida<<", en "<<"MM: "<<tiempoVRapida/100<<" ss: "<<tiempoVRapida%100;
+	cout<<"\nVuelta mas lenta, vuelta Nro "<<vLenta<<", en "<<"MM: "<<tiempoVLenta/100<<" ss: "<<tiempoVLenta%100;
 	cout<< endl;
-	system("pause");
+	
+//	system("pause");
 	return 0;
 }
 
@@ -99,16 +114,39 @@ void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle){
 
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
     for (int i=0; i<cantVueltas; i++){
-        ingresoDeDato("Ingrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
-		ingresoDeDato("Ingrese Tiempo.de Vuelta mmss: ", Vueltas[i].tiempoVuelta);
+        ingresoDeDato("\nIngrese Nro.de Vuelta: ", Vueltas[i].nroVuelta);
+		ingresoDeDato("Ingrese Tiempo de la vuelta con formato MMss: ", Vueltas[i].tiempoVuelta);
     }
 }
+
+void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida){
+	vueltaRapida=Vueltas[0].nroVuelta;
+	tiempoVueltaRapida=Vueltas[0].tiempoVuelta;
+	
+	for(int i=1;i<cantVueltas;i++){
+		 if(Vueltas[i].tiempoVuelta<vueltaRapida){
+		 vueltaRapida=Vueltas[i].nroVuelta;
+		 tiempoVueltaRapida=Vueltas[i].tiempoVuelta;		 										   	
+		 }
+	}
+}
+void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,int&tiempoVueltaLenta){
+	vueltaLenta=Vueltas[0].nroVuelta;
+	tiempoVueltaLenta=Vueltas[0].tiempoVuelta;
+	
+	for(int i=1;i<cantVueltas;i++){
+		 if(Vueltas[i].tiempoVuelta>vueltaLenta){
+		 vueltaLenta=Vueltas[i].nroVuelta;
+		 tiempoVueltaLenta=Vueltas[i].tiempoVuelta;		 										   	
+		 }
+	}
+}
+
 
 void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
 	for (int i=0; i<cantVueltas;i++){
 		cout<<"\nVuelta: "<<Vueltas[i].nroVuelta;
-		cout<<"\nTiempo: "<<Vueltas[i].tiempoVuelta;
-		cout<<"\nLargo: "<<Vueltas[i].largoVuelta<<endl;
-    }
-    
+		cout<<"\nTiempo MM: "<<Vueltas[i].tiempoVuelta/100<<" ss: "<<Vueltas[i].tiempoVuelta%100;
+		cout<<"\nLargo: "<<Vueltas[i].largoVuelta<<" Km\n";
+    }   
 }
