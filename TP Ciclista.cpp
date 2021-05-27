@@ -32,7 +32,7 @@ a. Cargar los datos de las vueltas seleccionadas. Se debe poder cargar los datos
 cantidad arbitraria de vueltas determinada por el ciclista.
 b. Cuál fue, de las ingresadas, la vuelta más rápida y su tiempo.
 c. Cuál fue, de las ingresadas, la vuelta más lenta y su tiempo.
-d. Cuál fue la velocidad media, expresada en m/s. (Vm = distancia / Tmax - Tmin)
+d. Cuál es el porcentaje de reducción de tiempo entre el peor y mejor tiempo (Tmin / TMax -1)
 */
 /*Etapa 2
 En esta nueva etapa, el ciclista desea realizar algunos cambios a la aplicación.
