@@ -1,5 +1,4 @@
-
-/* Trabajo práctico Ciclista	
+ //Trabajo práctico Ciclista	
 Integrantes
 Mateo, Bautista
 Recalde, Ignacio
@@ -78,13 +77,16 @@ struct st_Vueltas {
 void ingresoDeDato(string mensajeAlUsuario, int &valorDetalle);
 void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
 void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas);
-void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida);
-void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,int&tiempoVueltaLenta);
+//void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,int&tiempoVueltaLenta);
+//void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida);
+void calcularVuelta(st_Vueltas Vueltas[],int cantVueltas,int&vuelta,int&tiempo,char tipoVuelta);
 
 int main(){
     int cantVueltas=0;
     int vRapida=0,tiempoVRapida=0;
     int vLenta=0,tiempoVLenta=0;
+    int vuelta=0, tiempo=0;
+    char tipoVuelta;
     
 	//Etapa 1.a)
     ingresoDeDato("Ingrese la cantidad de Vueltas a cargar: ", cantVueltas);
@@ -92,16 +94,27 @@ int main(){
    	cargoLasVueltas(Vueltas, cantVueltas);
 
 	//Etapa 1.b)
-	calcularVueltaRapida(Vueltas,cantVueltas,vRapida,tiempoVRapida);
-	calcularVueltaLenta(Vueltas,cantVueltas,vLenta,tiempoVLenta);
+	//calcularVueltaRapida(Vueltas,cantVueltas,vueltaRapida,tiempoVueltaRapida);
+	//calcularVueltaLenta(Vueltas,cantVueltas,vueltaLenta,tiempoVueltaLenta);
+	calcularVuelta(Vueltas,cantVueltas,vuelta,tiempo,'R');
+	vRapida = vuelta;
+	tiempoRapida = tiempo;
+    //Etapa 1.c)
+    calcularVuelta(Vueltas,cantVueltas,vuelta,tiempo,'L');	
+    vLenta = vuelta;
+	tiempoLenta = tiempo;
+	
+	//Etapa 1.d)
+	calculoVelocidadMedia(Vueltas, cantVueltas, velocidadMedia);
+	
+	
 	
 	
 	muestroLasVueltas(Vueltas,cantVueltas);
 	
-	cout<<"\nVuelta mas rapida, vuelta Nro "<<vRapida<<", en "<<"MM: "<<tiempoVRapida/100<<" ss: "<<tiempoVRapida%100;
-	cout<<"\nVuelta mas lenta, vuelta Nro "<<vLenta<<", en "<<"MM: "<<tiempoVLenta/100<<" ss: "<<tiempoVLenta%100;
-	cout<< endl;
-	
+	cout<<"\nVuelta mas rapida, vuelta Nro "<<vRapida<<", en "<<tiempoVRapida/100<<" min. "<<tiempoVRapida%100<<" ss. ";
+	cout<<"\nVuelta mas lenta, vuelta Nro "<<vLenta<<", en "<<<<tiempoVLenta/100<<" min. "<<tiempoVLenta%100<<" ss. \n";
+
 //	system("pause");
 	return 0;
 }
@@ -119,7 +132,19 @@ void cargoLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
     }
 }
 
-void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida){
+void calcularVuelta(st_Vueltas Vueltas[],int cantVueltas,int&vuelta,int&tiempo,char tipoVuelta){
+	vuelta=Vueltas[0].nroVuelta;
+	tiempo=Vueltas[0].tiempoVuelta;
+	
+	for(int i=0;i<cantVueltas;i++){
+		 if(tipoVuelta == 'R' && Vueltas[i].tiempoVuelta<vuelta || tipoVuelta == 'L' && Vueltas[i].tiempoVuelta>vuelta){
+		     vueltaRapida=Vueltas[i].nroVuelta;
+		     tiempoVueltaRapida=Vueltas[i].tiempoVuelta;		 										   	
+		 }
+    }
+}
+
+/*void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,int&tiempoVueltaRapida){
 	vueltaRapida=Vueltas[0].nroVuelta;
 	tiempoVueltaRapida=Vueltas[0].tiempoVuelta;
 	
@@ -129,7 +154,10 @@ void calcularVueltaRapida(st_Vueltas Vueltas[],int cantVueltas,int&vueltaRapida,
 		 tiempoVueltaRapida=Vueltas[i].tiempoVuelta;		 										   	
 		 }
 	}
+
+    
 }
+
 void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,int&tiempoVueltaLenta){
 	vueltaLenta=Vueltas[0].nroVuelta;
 	tiempoVueltaLenta=Vueltas[0].tiempoVuelta;
@@ -141,7 +169,7 @@ void calcularVueltaLenta(st_Vueltas Vueltas[],int cantVueltas,int&vueltaLenta,in
 		 }
 	}
 }
-
+*/
 
 void muestroLasVueltas(st_Vueltas Vueltas[], int cantVueltas){
 	for (int i=0; i<cantVueltas;i++){
